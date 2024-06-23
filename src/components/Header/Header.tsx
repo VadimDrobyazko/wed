@@ -23,6 +23,8 @@ const Header: React.FC = () => {
 
       return () => clearTimeout(videoTimer);
     }
+
+    return undefined;
   }, [showHeader, showVideo]);
 
   return (
