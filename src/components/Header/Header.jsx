@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import first from "../../video/first.MOV";
+import React, { useState, useEffect } from 'react';
+import first from '../../video/first.MOV';
 
 const Header = () => {
   const [showHeader, setShowHeader] = useState(true);
@@ -20,11 +20,13 @@ const Header = () => {
       const videoTimer = setTimeout(() => {
         setVideoVisible(true);
       }, 50);
+
       return () => clearTimeout(videoTimer);
     }
   }, [showHeader, showVideo]);
 
   return (
+    // eslint-disable-next-line react/jsx-filename-extension
     <header className="header">
       {showHeader && (
         <>
@@ -38,7 +40,7 @@ const Header = () => {
           <video
             width="100%"
             height="100%"
-            className={`video ${videoVisible ? "visible" : ""}`}
+            className={`video ${videoVisible ? 'visible' : ''}`}
             autoPlay
             muted
             loop
@@ -47,7 +49,11 @@ const Header = () => {
             <source src={first} type="video/mp4" />
           </video>
 
-          <button className={`header__button ${videoVisible ? "button__visible" : ""}`}>Гортай нижче</button>
+          <button
+            className={`header__button ${videoVisible ? 'button__visible' : ''}`}
+          >
+            Гортай нижче
+          </button>
         </>
       )}
     </header>
