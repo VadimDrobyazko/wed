@@ -1,17 +1,24 @@
-import React, { useEffect, useState } from "react";
-import two from "../../images/two.jpg";
+import React, { useEffect, useState } from 'react';
+import two from '../../images/two.jpg';
 
 const color = [
-  "#884d15",
-  "#9C7B5E",
-  "#A77743",
-  "#BB9365",
-  "#CFAF82",
-  "#f5f5dc",
+  '#884d15',
+  '#9C7B5E',
+  '#A77743',
+  '#BB9365',
+  '#CFAF82',
+  '#f5f5dc',
 ];
 
-const Main = () => {
-  const [timeRemaining, setTimeRemaining] = useState({
+interface TimeRemaining {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+}
+
+const Main: React.FC = () => {
+  const [timeRemaining, setTimeRemaining] = useState<TimeRemaining>({
     days: 0,
     hours: 0,
     minutes: 0,
@@ -21,14 +28,14 @@ const Main = () => {
   useEffect(() => {
     const options = {
       root: null,
-      rootMargin: "0px",
+      rootMargin: '0px',
       threshold: 0.1,
     };
 
-    const callback = (entries, observer) => {
-      entries.forEach((entry) => {
+    const callback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
+          entry.target.classList.add('visible');
         }
       });
     };
@@ -36,17 +43,19 @@ const Main = () => {
     const observer = new IntersectionObserver(callback, options);
 
     const targets = document.querySelectorAll(
-      ".main__title, .main__subtitle, .main__date, .main__day, .main__img, .main__dress--title, .main__dress--span, .main__dress--color, .main__location--title, .main__location--subtitle, .main__location--button, .main__time--time, .main__time--ul, .main__time--span"
+      // eslint-disable-next-line max-len
+      '.main__title, .main__subtitle, .main__date, .main__day, .main__img, .main__dress--title, .main__dress--span, .main__dress--color, .main__location--title, .main__location--subtitle, .main__location--button, .main__time--time, .main__time--ul, .main__time--span',
     );
-    targets.forEach((target) => observer.observe(target));
+
+    targets.forEach(target => observer.observe(target));
 
     return () => {
-      targets.forEach((target) => observer.unobserve(target));
+      targets.forEach(target => observer.unobserve(target));
     };
   }, []);
 
   useEffect(() => {
-    const countdownDate = new Date("August 16, 2024 00:00:00").getTime();
+    const countdownDate = new Date('August 16, 2024 00:00:00').getTime();
 
     const updateCountdown = () => {
       const now = new Date().getTime();
@@ -54,7 +63,7 @@ const Main = () => {
 
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
       const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
       );
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
@@ -63,6 +72,7 @@ const Main = () => {
     };
 
     const interval = setInterval(updateCountdown, 1000);
+
     return () => clearInterval(interval);
   }, []);
 
@@ -77,7 +87,7 @@ const Main = () => {
           </span>
 
           <span className="main__date">16.08.2024</span>
-          <span className="main__day">П'ятниця</span>
+          <span className="main__day">П&apos;ятниця</span>
         </div>
 
         <img src={two} alt="BV" className="main__img" />

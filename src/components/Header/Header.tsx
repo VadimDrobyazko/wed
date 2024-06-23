@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import first from '../../video/first.MOV';
 
-const Header = () => {
+const Header: React.FC = () => {
   const [showHeader, setShowHeader] = useState(true);
   const [showVideo, setShowVideo] = useState(false);
   const [videoVisible, setVideoVisible] = useState(false);
@@ -26,7 +26,6 @@ const Header = () => {
   }, [showHeader, showVideo]);
 
   return (
-    // eslint-disable-next-line react/jsx-filename-extension
     <header className="header">
       {showHeader && (
         <>
