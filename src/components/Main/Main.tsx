@@ -98,7 +98,7 @@ const Main: React.FC = () => {
           <h2 className="main__dress--title">дресс-код</h2>
 
           <span className="main__dress--span">
-            Нам буде приємно, якщо ви підтримаєте кольорову гамму нашого весілля
+            Нам буде приємно, якщо ви підтримаєте кольорову гаму нашого весілля
           </span>
 
           <div className="main__dress-block">
@@ -180,7 +180,7 @@ const Main: React.FC = () => {
 
           <li>15:00 - Бенкет</li>
 
-          <li>21:00 - Вечірня Царемонія</li>
+          <li>21:00 - Вечірня Церемонія</li>
         </ul>
       </section>
     </main>
